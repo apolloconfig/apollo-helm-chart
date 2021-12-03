@@ -1,6 +1,6 @@
 # Apollo Helm Chart
 
-[Apollo](https://github.com/ctripcorp/apollo) is a reliable configuration management system.
+[Apollo](https://github.com/apolloconfig/apollo) is a reliable configuration management system.
 
 ## 1. Introduction
 
@@ -14,7 +14,7 @@ The apollo-service and apollo-portal charts create deployments for apollo-config
 ## 3. Add Apollo Helm Chart Repository
 
 ```bash
-$ helm repo add apollo https://www.apolloconfig.com/charts
+$ helm repo add apollo https://charts.apolloconfig.com
 $ helm search repo apollo
 ```
 
