@@ -16,11 +16,13 @@
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "apollo.portal.fullName" . -}}
 {{- $svcPort := .Values.service.port -}}
-{{- if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion }}
-apiVersion: networking.k8s.io/v1beta1
-{{- else }}
-apiVersion: extensions/v1beta1
+{{- $apiVersion := "extensions/v1beta1" -}}
+{{- if .Capabilities.APIVersions.Has "networking.k8s.io/v1/Ingress" -}}
+{{- $apiVersion = "networking.k8s.io/v1" }}
+{{- else if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1/Ingress" -}}
+{{- $apiVersion = "networking.k8s.io/v1beta1" }}
 {{- end }}
+apiVersion: {{ $apiVersion }}
 kind: Ingress
 metadata:
   name: {{ $fullName }}
@@ -48,9 +50,19 @@ spec:
         paths:
         {{- range .paths }}
           - path: {{ . }}
+          {{- if eq $apiVersion "networking.k8s.io/v1" }}
+            pathType: Prefix
+          {{- end }}
             backend:
+            {{- if eq $apiVersion "networking.k8s.io/v1" }}
+              service:
+                name: {{ $fullName }}
+                port:
+                  number: {{ $svcPort }}
+            {{- else }}
               serviceName: {{ $fullName }}
               servicePort: {{ $svcPort }}
+            {{- end }}
         {{- end }}
   {{- end }}
 {{- end }}
