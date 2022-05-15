@@ -2,8 +2,24 @@ apiVersion: v1
 entries:
   apollo-portal:
   - apiVersion: v2
+    appVersion: 2.0.0
+    created: "2022-05-15T10:04:02.63756+08:00"
+    description: A Helm chart for Apollo Portal
+    digest: 7a55c96963a09ff9254eb491870a648b6dac1bafaca8572ad2a8663d32b28a59
+    home: https://github.com/apolloconfig/apollo
+    icon: https://raw.githubusercontent.com/apolloconfig/apollo/master/apollo-portal/src/main/resources/static/img/logo-simple.png
+    maintainers:
+    - email: nobodyiam@gmail.com
+      name: nobodyiam
+      url: https://github.com/nobodyiam
+    name: apollo-portal
+    type: application
+    urls:
+    - apollo-portal-0.5.0.tgz
+    version: 0.5.0
+  - apiVersion: v2
     appVersion: 2.0.0-RC1
-    created: "2022-04-10T22:29:09.450763+08:00"
+    created: "2022-05-15T10:04:02.636903+08:00"
     description: A Helm chart for Apollo Portal
     digest: 6a09af19b433fc775766cd9031e5c9881d180133298f8befb00f546085c2eabd
     home: https://github.com/apolloconfig/apollo
@@ -19,7 +35,7 @@ entries:
     version: 0.4.1
   - apiVersion: v2
     appVersion: 2.0.0-RC1
-    created: "2022-04-10T22:29:09.450143+08:00"
+    created: "2022-05-15T10:04:02.63614+08:00"
     description: A Helm chart for Apollo Portal
     digest: 1ccab3da49e18f2f9b238e7e508b7adad8398715861866b0c55d8780313a1c82
     home: https://github.com/apolloconfig/apollo
@@ -35,7 +51,7 @@ entries:
     version: 0.4.0
   - apiVersion: v2
     appVersion: 1.9.2
-    created: "2022-04-10T22:29:09.449224+08:00"
+    created: "2022-05-15T10:04:02.635217+08:00"
     description: A Helm chart for Apollo Portal
     digest: c49a4dfce9628f8cbb812093eb9477c989bb805d7303bcac041c102f1adb3dd3
     home: https://github.com/apolloconfig/apollo
@@ -51,7 +67,7 @@ entries:
     version: 0.3.2
   - apiVersion: v2
     appVersion: 1.9.1
-    created: "2022-04-10T22:29:09.448303+08:00"
+    created: "2022-05-15T10:04:02.634228+08:00"
     description: A Helm chart for Apollo Portal
     digest: 6e50025665de4179f3485aa58ef33f24556267764afc645eaaab98810716f7ab
     home: https://github.com/ctripcorp/apollo
@@ -67,7 +83,7 @@ entries:
     version: 0.3.1
   - apiVersion: v2
     appVersion: 1.9.0
-    created: "2022-04-10T22:29:09.447579+08:00"
+    created: "2022-05-15T10:04:02.633466+08:00"
     description: A Helm chart for Apollo Portal
     digest: 5013793bf02482003afc17df98e5a6c62fbfb1e17f08ba49f3d27bd02fbd768d
     home: https://github.com/ctripcorp/apollo
@@ -83,7 +99,7 @@ entries:
     version: 0.3.0
   - apiVersion: v2
     appVersion: 1.8.2
-    created: "2022-04-10T22:29:09.446846+08:00"
+    created: "2022-05-15T10:04:02.632721+08:00"
     description: A Helm chart for Apollo Portal
     digest: 5586b2597ebe098a26c94273855461891041241628d85dc13e05ce661ff5e7a2
     home: https://github.com/ctripcorp/apollo
@@ -99,7 +115,7 @@ entries:
     version: 0.2.2
   - apiVersion: v2
     appVersion: 1.8.1
-    created: "2022-04-10T22:29:09.445763+08:00"
+    created: "2022-05-15T10:04:02.631991+08:00"
     description: A Helm chart for Apollo Portal
     digest: 8bac1b48361e2717d7d4ee669a85a14ee22ada96f249300d90ee563def63baea
     home: https://github.com/ctripcorp/apollo
@@ -115,7 +131,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.8.0
-    created: "2022-04-10T22:29:09.443991+08:00"
+    created: "2022-05-15T10:04:02.630892+08:00"
     description: A Helm chart for Apollo Portal
     digest: 8a55c5f3ddd76b9768067fe6eecfb34b588084557c11882e263abb2af7dfc173
     home: https://github.com/ctripcorp/apollo
@@ -131,7 +147,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.7.2
-    created: "2022-04-10T22:29:09.443251+08:00"
+    created: "2022-05-15T10:04:02.630165+08:00"
     description: A Helm chart for Apollo Portal
     digest: 1db8b2435e0471ef55c63c47b970e4ae059800f88ed4ac4f1ca6cd27fe502722
     home: https://github.com/ctripcorp/apollo
@@ -147,7 +163,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.7.1
-    created: "2022-04-10T22:29:09.44229+08:00"
+    created: "2022-05-15T10:04:02.629213+08:00"
     description: A Helm chart for Apollo Portal
     digest: 7c1b4efa13d4cc54a714b3ec836f609a8f97286c465789f6d807d1227cfc5b74
     home: https://github.com/ctripcorp/apollo
@@ -163,7 +179,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.7.0
-    created: "2022-04-10T22:29:09.441364+08:00"
+    created: "2022-05-15T10:04:02.628321+08:00"
     description: A Helm chart for Apollo Portal
     digest: b838e4478f0c031093691defeffb5805d51189989db0eb9caaa2dc67905c8391
     home: https://github.com/ctripcorp/apollo
@@ -179,8 +195,24 @@ entries:
     version: 0.1.0
   apollo-service:
   - apiVersion: v2
+    appVersion: 2.0.0
+    created: "2022-05-15T10:04:02.649054+08:00"
+    description: A Helm chart for Apollo Config Service and Apollo Admin Service
+    digest: 110fc1da62473583a2e3e4a85b4b6cd78dd876faa81c6b5ae88f29ec7c64b955
+    home: https://github.com/apolloconfig/apollo
+    icon: https://raw.githubusercontent.com/apolloconfig/apollo/master/apollo-portal/src/main/resources/static/img/logo-simple.png
+    maintainers:
+    - email: nobodyiam@gmail.com
+      name: nobodyiam
+      url: https://github.com/nobodyiam
+    name: apollo-service
+    type: application
+    urls:
+    - apollo-service-0.5.0.tgz
+    version: 0.5.0
+  - apiVersion: v2
     appVersion: 2.0.0-RC1
-    created: "2022-04-10T22:29:09.461956+08:00"
+    created: "2022-05-15T10:04:02.64835+08:00"
     description: A Helm chart for Apollo Config Service and Apollo Admin Service
     digest: c42f7c15caec9d02fb25f36ca512e3fb586f733ea899ca2ae10679e453bcf7c4
     home: https://github.com/apolloconfig/apollo
@@ -196,7 +228,7 @@ entries:
     version: 0.4.1
   - apiVersion: v2
     appVersion: 2.0.0-RC1
-    created: "2022-04-10T22:29:09.461284+08:00"
+    created: "2022-05-15T10:04:02.647453+08:00"
     description: A Helm chart for Apollo Config Service and Apollo Admin Service
     digest: 04375eede33a6bb65cedf6fb130503f159d922957311c648fcb4bd6e027e747f
     home: https://github.com/apolloconfig/apollo
@@ -212,7 +244,7 @@ entries:
     version: 0.4.0
   - apiVersion: v2
     appVersion: 1.9.2
-    created: "2022-04-10T22:29:09.460174+08:00"
+    created: "2022-05-15T10:04:02.646377+08:00"
     description: A Helm chart for Apollo Config Service and Apollo Admin Service
     digest: a21a4626a4ff1968975abbaabd84c49213fcbd5b8df54b9c723f098179ffe036
     home: https://github.com/apolloconfig/apollo
@@ -228,7 +260,7 @@ entries:
     version: 0.3.2
   - apiVersion: v2
     appVersion: 1.9.1
-    created: "2022-04-10T22:29:09.458669+08:00"
+    created: "2022-05-15T10:04:02.645268+08:00"
     description: A Helm chart for Apollo Config Service and Apollo Admin Service
     digest: e444ef8db74d8e11b7b5cfebb31ac2e1138a40d036045f432898ebf98fc33f07
     home: https://github.com/ctripcorp/apollo
@@ -244,7 +276,7 @@ entries:
     version: 0.3.1
   - apiVersion: v2
     appVersion: 1.9.0
-    created: "2022-04-10T22:29:09.457787+08:00"
+    created: "2022-05-15T10:04:02.644438+08:00"
     description: A Helm chart for Apollo Config Service and Apollo Admin Service
     digest: 8eab8f69d2fddc8b3c930c76f9e930d2e144cc31805b4df8856cf1e945e9333a
     home: https://github.com/ctripcorp/apollo
@@ -260,7 +292,7 @@ entries:
     version: 0.3.0
   - apiVersion: v2
     appVersion: 1.8.2
-    created: "2022-04-10T22:29:09.456879+08:00"
+    created: "2022-05-15T10:04:02.643517+08:00"
     description: A Helm chart for Apollo Config Service and Apollo Admin Service
     digest: 7291d516b94390843439bae7a2635561e713a549339a314fa2ef79ef098b6ab4
     home: https://github.com/ctripcorp/apollo
@@ -276,7 +308,7 @@ entries:
     version: 0.2.2
   - apiVersion: v2
     appVersion: 1.8.1
-    created: "2022-04-10T22:29:09.456016+08:00"
+    created: "2022-05-15T10:04:02.642728+08:00"
     description: A Helm chart for Apollo Config Service and Apollo Admin Service
     digest: f88f0c6942353b3d49b4caa43a7580b885ccc94a646428694adc2ed3d43e49fe
     home: https://github.com/ctripcorp/apollo
@@ -292,7 +324,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.8.0
-    created: "2022-04-10T22:29:09.454991+08:00"
+    created: "2022-05-15T10:04:02.641758+08:00"
     description: A Helm chart for Apollo Config Service and Apollo Admin Service
     digest: 73e66c651499f93b6f3891e979dcbe2a20ad37809087e42bc98643c604c457c6
     home: https://github.com/ctripcorp/apollo
@@ -308,7 +340,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.7.2
-    created: "2022-04-10T22:29:09.45325+08:00"
+    created: "2022-05-15T10:04:02.640774+08:00"
     description: A Helm chart for Apollo Config Service and Apollo Admin Service
     digest: be9379611b45db416a32b7e1367527faec7c29a969493ca4a0a72b5b87a280f4
     home: https://github.com/ctripcorp/apollo
@@ -324,7 +356,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.7.1
-    created: "2022-04-10T22:29:09.452279+08:00"
+    created: "2022-05-15T10:04:02.640032+08:00"
     description: A Helm chart for Apollo Config Service and Apollo Admin Service
     digest: 787a26590d68735341b7839c14274492097fed4a0843fc9a1e5c692194199707
     home: https://github.com/ctripcorp/apollo
@@ -340,7 +372,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.7.0
-    created: "2022-04-10T22:29:09.451526+08:00"
+    created: "2022-05-15T10:04:02.638354+08:00"
     description: A Helm chart for Apollo Config Service and Apollo Admin Service
     digest: 65c08f39b54ad1ac1d849cc841ce978bd6e95b0b6cbd2423d9f17f66bc7e8d3e
     home: https://github.com/ctripcorp/apollo
@@ -354,4 +386,4 @@ entries:
     urls:
     - apollo-service-0.1.0.tgz
     version: 0.1.0
-generated: "2022-04-10T22:29:09.439598+08:00"
+generated: "2022-05-15T10:04:02.626753+08:00"
