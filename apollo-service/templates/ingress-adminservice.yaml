@@ -33,6 +33,9 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
+{{- if .Values.adminService.ingress.ingressClassName }}
+  ingressClassName: {{ .Values.adminService.ingress.ingressClassName }}
+{{- end }}
 {{- if .Values.adminService.ingress.tls }}
   tls:
   {{- range .Values.adminService.ingress.tls }}
