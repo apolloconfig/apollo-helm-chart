@@ -82,6 +82,7 @@ The following table lists the configurable parameters of the apollo-service char
 | `configService.ingress.hosts.host` | The host of the ingress for config-service | `nil` |
 | `configService.ingress.hosts.paths` | The paths of the ingress for config-service | `[]` |
 | `configService.ingress.tls` | The tls definition of the ingress for config-service | `[]` |
+| `configService.ingress.ingressClassName` | The ingressClassName definition of the ingress for config-service | `nil` |
 | `configService.liveness.initialDelaySeconds` | The initial delay seconds of liveness probe | `100` |
 | `configService.liveness.periodSeconds` | The period seconds of liveness probe | `10` |
 | `configService.readiness.initialDelaySeconds` | The initial delay seconds of readiness probe | `30` |
@@ -112,6 +113,7 @@ The following table lists the configurable parameters of the apollo-service char
 | `adminService.ingress.hosts.host` | The host of the ingress for admin-service | `nil` |
 | `adminService.ingress.hosts.paths` | The paths of the ingress for admin-service | `[]` |
 | `adminService.ingress.tls` | The tls definition of the ingress for admin-service | `[]` |
+| `adminService.ingress.ingressClassName` | The ingressClassName definition of the ingress for admin-service | `nil` |
 | `adminService.liveness.initialDelaySeconds` | The initial delay seconds of liveness probe | `100` |
 | `adminService.liveness.periodSeconds` | The period seconds of liveness probe | `10` |
 | `adminService.readiness.initialDelaySeconds` | The initial delay seconds of readiness probe | `30` |
@@ -249,6 +251,7 @@ The following table lists the configurable parameters of the apollo-portal chart
 | `ingress.hosts.host` | The host of the ingress | `nil` |
 | `ingress.hosts.paths` | The paths of the ingress | `[]` |
 | `ingress.tls` | The tls definition of the ingress | `[]` |
+| `ingress.ingressClassName` | The ingressClassName definition of the ingress | `nil` |
 | `liveness.initialDelaySeconds` | The initial delay seconds of liveness probe | `100` |
 | `liveness.periodSeconds` | The period seconds of liveness probe | `10` |
 | `readiness.initialDelaySeconds` | The initial delay seconds of readiness probe | `30` |

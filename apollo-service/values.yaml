@@ -47,6 +47,7 @@ configService:
     targetPort: 8080
     type: ClusterIP
   ingress:
+    ingressClassName: null
     enabled: false
     annotations: { }
     hosts:
@@ -92,6 +93,7 @@ adminService:
     targetPort: 8090
     type: ClusterIP
   ingress:
+    ingressClassName: null
     enabled: false
     annotations: { }
     hosts:
