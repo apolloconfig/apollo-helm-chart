@@ -26,5 +26,10 @@ spec:
       protocol: TCP
       port: {{ .Values.adminService.service.port }}
       targetPort: {{ .Values.adminService.service.targetPort }}
+      {{- if and (or (eq .Values.adminService.service.type "NodePort") (eq .Values.adminService.service.type "LoadBalancer")) .Values.adminService.service.nodePort}}
+      nodePort: {{ .Values.adminService.service.nodePort}}
+      {{- else if eq .Values.adminService.service.type "ClusterIP" }}
+      nodePort: null
+      {{- end }}
   selector:
     app: {{ include "apollo.adminService.fullName" . }}
