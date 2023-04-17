@@ -45,6 +45,7 @@ configService:
     fullNameOverride: ""
     port: 8080
     targetPort: 8080
+    nodePort: ""
     type: ClusterIP
   ingress:
     ingressClassName: null
@@ -91,6 +92,7 @@ adminService:
     fullNameOverride: ""
     port: 8090
     targetPort: 8090
+    nodePort: ""
     type: ClusterIP
   ingress:
     ingressClassName: null
