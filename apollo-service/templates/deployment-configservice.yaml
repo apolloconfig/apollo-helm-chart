@@ -51,6 +51,8 @@ spec:
     metadata:
       labels:
         app: {{ $configServiceFullName }}
+      annotations:
+        {{- toYaml .Values.configService.annotations| nindent 8 }}
     spec:
       {{- with .Values.configService.imagePullSecrets }}
       imagePullSecrets:

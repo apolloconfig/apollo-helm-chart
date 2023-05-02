@@ -97,6 +97,7 @@ The following table lists the configurable parameters of the apollo-service char
 | `configService.nodeSelector` | The node selector definition of apollo-configservice | `{}` |
 | `configService.tolerations` | The tolerations definition of apollo-configservice | `[]` |
 | `configService.affinity` | The affinity definition of apollo-configservice | `{}` |
+| `configService.annotations` | The annotations definition of apollo-configservice | `{}` |
 | `adminService.fullNameOverride` | Override the deployment name for apollo-adminservice | `nil` |
 | `adminService.replicaCount` | Replica count of apollo-adminservice | `2` |
 | `adminService.containerPort` | Container port of apollo-adminservice | `8090` |
@@ -126,6 +127,7 @@ The following table lists the configurable parameters of the apollo-service char
 | `adminService.nodeSelector` | The node selector definition of apollo-adminservice | `{}` |
 | `adminService.tolerations` | The tolerations definition of apollo-adminservice | `[]` |
 | `adminService.affinity` | The affinity definition of apollo-adminservice | `{}` |
+| `adminService.annotations` | The annotations definition of apollo-adminservice | `{}` |
 
 ### 4.4 Sample
 
@@ -262,6 +264,7 @@ The following table lists the configurable parameters of the apollo-portal chart
 | `nodeSelector` | The node selector definition of apollo-portal | `{}` |
 | `tolerations` | The tolerations definition of apollo-portal | `[]` |
 | `affinity` | The affinity definition of apollo-portal | `{}` |
+| `annotations` | The annotations definition of apollo-portal | `{}` |
 | `config.profiles` | specify the spring profiles to activate | `github,auth` |
 | `config.envs` | specify the env names, e.g. dev,pro | `nil` |
 | `config.contextPath` | specify the context path, e.g. `/apollo`, then users could access portal via `http://{portal_address}/apollo` | `nil` |

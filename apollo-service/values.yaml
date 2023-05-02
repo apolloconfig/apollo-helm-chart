@@ -76,6 +76,7 @@ configService:
   nodeSelector: {}
   tolerations: []
   affinity: {}
+  annotations: {}
 
 adminService:
   name: apollo-adminservice
@@ -118,3 +119,4 @@ adminService:
   nodeSelector: {}
   tolerations: []
   affinity: {}
+  annotations: {}
