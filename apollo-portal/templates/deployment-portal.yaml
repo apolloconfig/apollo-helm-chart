@@ -60,8 +60,10 @@ spec:
     metadata:
       labels:
         app: {{ $portalFullName }}
+      {{- with .Values.annotations }}
       annotations:
-        {{- toYaml .Values.annotations| nindent 8 }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:

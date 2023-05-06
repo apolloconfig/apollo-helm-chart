@@ -49,8 +49,10 @@ spec:
     metadata:
       labels:
         app: {{ $adminServiceFullName }}
+      {{- with .Values.annotations }}
       annotations:
-        {{- toYaml .Values.adminService.annotations| nindent 8 }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
     spec:
       {{- with .Values.adminService.imagePullSecrets }}
       imagePullSecrets:
