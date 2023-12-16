@@ -26,6 +26,7 @@ service:
   fullNameOverride: ""
   port: 8070
   targetPort: 8070
+  nodePort: ""
   type: ClusterIP
   sessionAffinity: ClientIP
 ingress:
