@@ -39,7 +39,7 @@ $ helm install apollo-service-dev \
 Or customize it with values.yaml
 
 ```bash
-$ helm install apollo-service-dev -f values.yaml -n your-namespace apollo/apollo-service 
+$ helm install apollo-service-dev -f values.yaml -n your-namespace apollo/apollo-service
 ```
 
 ### 4.2 Uninstall
@@ -74,6 +74,7 @@ The following table lists the configurable parameters of the apollo-service char
 | `configService.image.pullPolicy`                | Image pull policy of apollo-configservice | `IfNotPresent` |
 | `configService.imagePullSecrets`                | Image pull secrets of apollo-configservice | `[]` |
 | `configService.service.fullNameOverride` | Override the service name for apollo-configservice | `nil` |
+| `configService.service.annotations` | The annotations of the service for apollo-configservice | `{}` |
 | `configService.service.port` | The port for the service of apollo-configservice | `8080` |
 | `configService.service.targetPort` | The target port for the service of apollo-configservice | `8080` |
 | `configService.service.type` | The service type of apollo-configservice                     | `ClusterIP` |
@@ -106,6 +107,7 @@ The following table lists the configurable parameters of the apollo-service char
 | `adminService.image.pullPolicy`                | Image pull policy of apollo-adminservice | `IfNotPresent` |
 | `adminService.imagePullSecrets`                | Image pull secrets of apollo-adminservice | `[]` |
 | `adminService.service.fullNameOverride` | Override the service name for apollo-adminservice | `nil` |
+| `adminService.service.annotations` | The annotations of the service for apollo-adminservice | `{}` |
 | `adminService.service.port` | The port for the service of apollo-adminservice | `8090` |
 | `adminService.service.targetPort` | The target port for the service of apollo-adminservice | `8090` |
 | `adminService.service.type` | The service type of apollo-adminservice                     | `ClusterIP` |
@@ -219,7 +221,7 @@ $ helm install apollo-portal \
 Or customize it with values.yaml
 
 ```bash
-$ helm install apollo-portal -f values.yaml -n your-namespace apollo/apollo-portal 
+$ helm install apollo-portal -f values.yaml -n your-namespace apollo/apollo-portal
 ```
 
 ### 5.2 Uninstallation
@@ -244,6 +246,7 @@ The following table lists the configurable parameters of the apollo-portal chart
 | `image.pullPolicy`                | Image pull policy of apollo-portal | `IfNotPresent` |
 | `imagePullSecrets`                | Image pull secrets of apollo-portal | `[]` |
 | `service.fullNameOverride` | Override the service name for apollo-portal | `nil` |
+| `service.annotations` | The annotations of the service for apollo-portal | `{}` |
 | `service.port` | The port for the service of apollo-portal | `8070` |
 | `service.targetPort` | The target port for the service of apollo-portal | `8070` |
 | `service.type` | The service type of apollo-portal                     | `ClusterIP` |
