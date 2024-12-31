@@ -24,6 +24,7 @@ image:
 imagePullSecrets: []
 service:
   fullNameOverride: ""
+  annotations: {}
   port: 8070
   targetPort: 8070
   type: ClusterIP

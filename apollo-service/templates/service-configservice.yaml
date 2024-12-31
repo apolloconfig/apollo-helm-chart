@@ -19,6 +19,10 @@ metadata:
   name: {{ include "apollo.configService.serviceName" . }}
   labels:
     {{- include "apollo.service.labels" . | nindent 4 }}
+  {{- with .Values.configService.service.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   type: {{ .Values.configService.service.type }}
   ports:
