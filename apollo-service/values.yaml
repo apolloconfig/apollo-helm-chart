@@ -43,18 +43,18 @@ configService:
   imagePullSecrets: []
   service:
     fullNameOverride: ""
-    annotations: { }
+    annotations: {}
     port: 8080
     targetPort: 8080
     type: ClusterIP
   ingress:
     ingressClassName: null
     enabled: false
-    annotations: { }
+    annotations: {}
     hosts:
       - host: ""
-        paths: [ ]
-    tls: [ ]
+        paths: []
+    tls: []
   liveness:
     initialDelaySeconds: 100
     periodSeconds: 10
@@ -97,11 +97,11 @@ adminService:
   ingress:
     ingressClassName: null
     enabled: false
-    annotations: { }
+    annotations: {}
     hosts:
       - host: ""
-        paths: [ ]
-    tls: [ ]
+        paths: []
+    tls: []
   liveness:
     initialDelaySeconds: 100
     periodSeconds: 10
