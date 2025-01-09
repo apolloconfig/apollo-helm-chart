@@ -43,17 +43,18 @@ configService:
   imagePullSecrets: []
   service:
     fullNameOverride: ""
+    annotations: {}
     port: 8080
     targetPort: 8080
     type: ClusterIP
   ingress:
     ingressClassName: null
     enabled: false
-    annotations: { }
+    annotations: {}
     hosts:
       - host: ""
-        paths: [ ]
-    tls: [ ]
+        paths: []
+    tls: []
   liveness:
     initialDelaySeconds: 100
     periodSeconds: 10
@@ -63,9 +64,9 @@ configService:
   config:
     # spring profiles to activate
     profiles: "github,kubernetes"
-    # override apollo.config-service.url: config service url to be accessed by apollo-client 
+    # override apollo.config-service.url: config service url to be accessed by apollo-client
     configServiceUrlOverride: ""
-    # override apollo.admin-service.url: admin service url to be accessed by apollo-portal 
+    # override apollo.admin-service.url: admin service url to be accessed by apollo-portal
     adminServiceUrlOverride: ""
     # specify the context path, e.g. /apollo
     contextPath: ""
@@ -96,11 +97,11 @@ adminService:
   ingress:
     ingressClassName: null
     enabled: false
-    annotations: { }
+    annotations: {}
     hosts:
       - host: ""
-        paths: [ ]
-    tls: [ ]
+        paths: []
+    tls: []
   liveness:
     initialDelaySeconds: 100
     periodSeconds: 10
