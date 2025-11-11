@@ -38,6 +38,7 @@ metadata:
   name: {{ $configServiceFullName }}
   labels:
     {{- include "apollo.service.labels" . | nindent 4 }}
+    {{- toYaml .Values.configServic.labels | nindent 4 }}
 spec:
   replicas: {{ .Values.configService.replicaCount }}
   selector:
@@ -51,6 +52,7 @@ spec:
     metadata:
       labels:
         app: {{ $configServiceFullName }}
+        {{- toYaml .Values.configServic.labels | nindent 8 }}
       {{- with .Values.configService.annotations }}
       annotations:
         {{- toYaml . | nindent 8 }}

@@ -36,6 +36,7 @@ metadata:
   name: {{ $adminServiceFullName }}
   labels:
     {{- include "apollo.service.labels" . | nindent 4 }}
+    {{- toYaml .Values.adminServic.labels | nindent 4 }}
 spec:
   replicas: {{ .Values.adminService.replicaCount }}
   selector:
@@ -49,6 +50,7 @@ spec:
     metadata:
       labels:
         app: {{ $adminServiceFullName }}
+        {{- toYaml .Values.adminServic.labels | nindent 8 }}
       {{- with .Values.adminService.annotations }}
       annotations:
         {{- toYaml . | nindent 8 }}
