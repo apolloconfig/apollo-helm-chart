@@ -47,7 +47,6 @@ metadata:
   name: {{ $portalFullName }}
   labels:
     {{- include "apollo.portal.labels" . | nindent 4 }}
-    {{- toYaml .Values.labels | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
