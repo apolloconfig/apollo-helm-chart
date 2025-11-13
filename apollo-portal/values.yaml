@@ -51,6 +51,7 @@ nodeSelector: {}
 tolerations: []
 affinity: {}
 annotations: {}
+labels: {}
 
 config:
   # spring profiles to activate

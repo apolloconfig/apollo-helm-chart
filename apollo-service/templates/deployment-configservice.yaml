@@ -51,6 +51,7 @@ spec:
     metadata:
       labels:
         app: {{ $configServiceFullName }}
+        {{- toYaml .Values.configService.labels | nindent 8 }}
       {{- with .Values.configService.annotations }}
       annotations:
         {{- toYaml . | nindent 8 }}

@@ -49,6 +49,7 @@ spec:
     metadata:
       labels:
         app: {{ $adminServiceFullName }}
+        {{- toYaml .Values.adminService.labels | nindent 8 }}
       {{- with .Values.adminService.annotations }}
       annotations:
         {{- toYaml . | nindent 8 }}
