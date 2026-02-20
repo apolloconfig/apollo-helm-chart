@@ -193,10 +193,11 @@ jobs:
           curl -fsSL "${SQL_BASE_URL}/apolloportaldb.sql" -o /tmp/apolloportaldb.sql
 
           MYSQL_POD="$(kubectl -n apollo get pod -l app.kubernetes.io/name=mysql,app.kubernetes.io/instance=mysql -o jsonpath='{.items[0].metadata.name}')"
+          MYSQL_ROOT_PASSWORD="$(kubectl -n apollo get secret mysql -o jsonpath='{.data.mysql-root-password}' | base64 -d)"
           kubectl -n apollo cp /tmp/apolloconfigdb.sql "${MYSQL_POD}:/tmp/apolloconfigdb.sql"
           kubectl -n apollo cp /tmp/apolloportaldb.sql "${MYSQL_POD}:/tmp/apolloportaldb.sql"
-          kubectl -n apollo exec "${MYSQL_POD}" -- sh -c 'mysql -uroot -p"${MYSQL_ROOT_PASSWORD}" < /tmp/apolloconfigdb.sql'
-          kubectl -n apollo exec "${MYSQL_POD}" -- sh -c 'mysql -uroot -p"${MYSQL_ROOT_PASSWORD}" < /tmp/apolloportaldb.sql'
+          kubectl -n apollo exec "${MYSQL_POD}" -- env MYSQL_PWD="${MYSQL_ROOT_PASSWORD}" sh -c 'mysql -uroot < /tmp/apolloconfigdb.sql'
+          kubectl -n apollo exec "${MYSQL_POD}" -- env MYSQL_PWD="${MYSQL_ROOT_PASSWORD}" sh -c 'mysql -uroot < /tmp/apolloportaldb.sql'
 
       - name: Install Apollo charts
         run: |
