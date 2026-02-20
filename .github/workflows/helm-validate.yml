@@ -148,3 +148,129 @@ jobs:
             "${OUTPUT_DIR}/apollo-service-dev.yaml" \
             "${OUTPUT_DIR}/apollo-service-pro.yaml" \
             "${OUTPUT_DIR}/apollo-portal.yaml"
+
+  runtime-smoke:
+    name: Runtime Smoke Test (kind)
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.15.2
+
+      - name: Create kind cluster
+        uses: helm/kind-action@v1.10.0
+        with:
+          cluster_name: apollo-ci
+          wait: 120s
+
+      - name: Install MySQL
+        run: |
+          set -euo pipefail
+          kubectl create namespace apollo
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo update
+          helm install mysql bitnami/mysql \
+            --namespace apollo \
+            --set image.repository=bitnamilegacy/mysql \
+            --set auth.rootPassword=test \
+            --set auth.database=ApolloConfigDB \
+            --set primary.persistence.enabled=false
+          kubectl -n apollo rollout status statefulset/mysql --timeout=10m
+
+      - name: Init Apollo databases
+        run: |
+          set -euo pipefail
+          APOLLO_APP_VERSION="$(awk '/^appVersion:/ {print $2}' ./apollo-service/Chart.yaml | tr -d '\"')"
+          SQL_BASE_URL="https://raw.githubusercontent.com/apolloconfig/apollo/refs/tags/v${APOLLO_APP_VERSION}/scripts/sql/profiles/mysql-default"
+          curl -fsSL "${SQL_BASE_URL}/apolloconfigdb.sql" -o /tmp/apolloconfigdb.sql
+          curl -fsSL "${SQL_BASE_URL}/apolloportaldb.sql" -o /tmp/apolloportaldb.sql
+
+          MYSQL_POD="$(kubectl -n apollo get pod -l app.kubernetes.io/name=mysql,app.kubernetes.io/instance=mysql -o jsonpath='{.items[0].metadata.name}')"
+          MYSQL_ROOT_PASSWORD="$(kubectl -n apollo get secret mysql -o jsonpath='{.data.mysql-root-password}' | base64 -d)"
+          kubectl -n apollo cp /tmp/apolloconfigdb.sql "${MYSQL_POD}:/tmp/apolloconfigdb.sql"
+          kubectl -n apollo cp /tmp/apolloportaldb.sql "${MYSQL_POD}:/tmp/apolloportaldb.sql"
+          kubectl -n apollo exec "${MYSQL_POD}" -- env MYSQL_PWD="${MYSQL_ROOT_PASSWORD}" sh -c 'mysql -uroot < /tmp/apolloconfigdb.sql'
+          kubectl -n apollo exec "${MYSQL_POD}" -- env MYSQL_PWD="${MYSQL_ROOT_PASSWORD}" sh -c 'mysql -uroot < /tmp/apolloportaldb.sql'
+
+      - name: Install Apollo charts
+        run: |
+          set -euo pipefail
+
+          cat > /tmp/apollo-service-values-smoke.yaml <<'EOF'
+          configdb:
+            host: mysql
+            dbName: ApolloConfigDB
+            userName: root
+            password: test
+            connectionStringProperties: characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+
+          configService:
+            replicaCount: 1
+            readiness:
+              initialDelaySeconds: 20
+            env:
+              JAVA_OPTS: "-Xms512m -Xmx512m"
+
+          adminService:
+            replicaCount: 1
+            readiness:
+              initialDelaySeconds: 20
+            env:
+              JAVA_OPTS: "-Xms512m -Xmx512m"
+          EOF
+
+          cat > /tmp/apollo-portal-values-smoke.yaml <<'EOF'
+          portaldb:
+            host: mysql
+            dbName: ApolloPortalDB
+            userName: root
+            password: test
+            connectionStringProperties: characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+
+          config:
+            envs: dev
+            metaServers:
+              dev: http://apollo-service-dev-apollo-configservice:8080
+
+          env:
+            JAVA_OPTS: "-Xms512m -Xmx512m"
+
+          readiness:
+            initialDelaySeconds: 20
+          EOF
+
+          helm install apollo-service-dev ./apollo-service -n apollo -f /tmp/apollo-service-values-smoke.yaml
+          helm install apollo-portal ./apollo-portal -n apollo -f /tmp/apollo-portal-values-smoke.yaml
+
+      - name: Wait for deployments
+        run: |
+          set -euo pipefail
+          kubectl -n apollo rollout status deployment/apollo-service-dev-apollo-configservice --timeout=8m
+          kubectl -n apollo rollout status deployment/apollo-service-dev-apollo-adminservice --timeout=8m
+          kubectl -n apollo rollout status deployment/apollo-portal --timeout=8m
+
+      - name: Runtime probes
+        run: |
+          set -euo pipefail
+          kubectl -n apollo run curl-probe --rm -i --restart=Never --image=curlimages/curl:8.7.1 -- \
+            curl -fsS http://apollo-service-dev-apollo-configservice:8080/health
+          kubectl -n apollo run curl-probe-admin --rm -i --restart=Never --image=curlimages/curl:8.7.1 -- \
+            curl -fsS http://apollo-service-dev-apollo-adminservice:8090/health
+          kubectl -n apollo run curl-probe-portal --rm -i --restart=Never --image=curlimages/curl:8.7.1 -- \
+            curl -fsS http://apollo-portal:8070/health
+
+      - name: Dump diagnostics on failure
+        if: failure()
+        run: |
+          kubectl -n apollo get all
+          kubectl -n apollo get events --sort-by=.metadata.creationTimestamp
+          kubectl -n apollo logs deployment/apollo-service-dev-apollo-configservice --tail=200 || true
+          kubectl -n apollo logs deployment/apollo-service-dev-apollo-adminservice --tail=200 || true
+          kubectl -n apollo logs deployment/apollo-portal --tail=200 || true
