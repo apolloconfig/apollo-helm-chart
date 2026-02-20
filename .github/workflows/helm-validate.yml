@@ -178,6 +178,7 @@ jobs:
           helm repo update
           helm install mysql bitnami/mysql \
             --namespace apollo \
+            --set image.repository=bitnamilegacy/mysql \
             --set auth.rootPassword=test \
             --set auth.database=ApolloConfigDB \
             --set primary.persistence.enabled=false
