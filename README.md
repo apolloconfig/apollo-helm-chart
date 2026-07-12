@@ -77,6 +77,7 @@ The following table lists the configurable parameters of the apollo-service char
 | `configService.service.annotations` | The annotations of the service for apollo-configservice | `{}` |
 | `configService.service.port` | The port for the service of apollo-configservice | `8080` |
 | `configService.service.targetPort` | The target port for the service of apollo-configservice | `8080` |
+| `configService.service.nodePort` | The node port for the service of apollo-configservice | `nil` |
 | `configService.service.type` | The service type of apollo-configservice                     | `ClusterIP` |
 | `configService.ingress.enabled` | Whether to enable the ingress for config-service or not | `false` |
 | `configService.ingress.annotations` | The annotations of the ingress for config-service | `{}` |
@@ -111,6 +112,7 @@ The following table lists the configurable parameters of the apollo-service char
 | `adminService.service.annotations` | The annotations of the service for apollo-adminservice | `{}` |
 | `adminService.service.port` | The port for the service of apollo-adminservice | `8090` |
 | `adminService.service.targetPort` | The target port for the service of apollo-adminservice | `8090` |
+| `adminService.service.nodePort` | The node port for the service of apollo-adminservice | `nil` |
 | `adminService.service.type` | The service type of apollo-adminservice                     | `ClusterIP` |
 | `adminService.ingress.enabled` | Whether to enable the ingress for admin-service or not | `false` |
 | `adminService.ingress.annotations` | The annotations of the ingress for admin-service | `{}` |
@@ -251,6 +253,7 @@ The following table lists the configurable parameters of the apollo-portal chart
 | `service.annotations` | The annotations of the service for apollo-portal | `{}` |
 | `service.port` | The port for the service of apollo-portal | `8070` |
 | `service.targetPort` | The target port for the service of apollo-portal | `8070` |
+| `service.nodePort` | The node port for the service of apollo-portal | `nil` |
 | `service.type` | The service type of apollo-portal                     | `ClusterIP` |
 | `service.sessionAffinity` | The session affinity for the service of apollo-portal | `ClientIP` |
 | `ingress.enabled` | Whether to enable the ingress or not | `false` |
